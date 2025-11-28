@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Menu, X, Lightbulb } from 'lucide-react';
+import { Link, useLocation } from 'wouter';
 
 interface HeaderProps {
   darkMode: boolean;
@@ -8,13 +9,20 @@ interface HeaderProps {
 
 export default function LuminaTechHome({ darkMode, setDarkMode }: HeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [location] = useLocation();
+
+  // Cerrar menú cuando cambie la ruta
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [location]);
 
   return (
     <header className={`backdrop-blur-md border-b sticky top-0 z-50 transition-colors duration-500 ${darkMode ? 'bg-slate-900/80 border-amber-500/20' : 'bg-white/80 border-amber-500/30'}`}>
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
+
           {/* Logo */}
-          <button 
+          <button
             onClick={() => setDarkMode(!darkMode)}
             className="flex items-center space-x-3 hover:opacity-80 transition-opacity cursor-pointer"
             title={darkMode ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
@@ -31,21 +39,35 @@ export default function LuminaTechHome({ darkMode, setDarkMode }: HeaderProps) {
 
           {/* Menu Desktop */}
           <div className="hidden md:flex space-x-8">
-            <a href="#home" className={`transition-colors duration-300 font-medium ${darkMode ? 'text-gray-300 hover:text-amber-400' : 'text-gray-700 hover:text-amber-600'}`}>Inicio</a>
-            <a href="#productos" className={`transition-colors duration-300 font-medium ${darkMode ? 'text-gray-300 hover:text-amber-400' : 'text-gray-700 hover:text-amber-600'}`}>Productos</a>
-            <a href="#simulador" className={`transition-colors duration-300 font-medium flex items-center ${darkMode ? 'text-gray-300 hover:text-amber-400' : 'text-gray-700 hover:text-amber-600'}`}>
+            <Link to="/lux-tech/" className={`transition-colors duration-300 font-medium ${darkMode ? 'text-gray-300 hover:text-amber-400' : 'text-gray-700 hover:text-amber-600'}`}>
+              Inicio
+            </Link>
+
+            <Link to="/lux-tech/productos" className={`transition-colors duration-300 font-medium ${darkMode ? 'text-gray-300 hover:text-amber-400' : 'text-gray-700 hover:text-amber-600'}`}>
+              Productos
+            </Link>
+
+            <Link to="/lux-tech/simulador" className={`transition-colors duration-300 font-medium flex items-center ${darkMode ? 'text-gray-300 hover:text-amber-400' : 'text-gray-700 hover:text-amber-600'}`}>
               Simulador
               <span className={`ml-1 text-xs px-2 py-0.5 rounded-full ${darkMode ? 'bg-amber-500/20 text-amber-400' : 'bg-amber-200 text-amber-700'}`}>Próximamente</span>
-            </a>
-            <a href="#nosotros" className={`transition-colors duration-300 font-medium ${darkMode ? 'text-gray-300 hover:text-amber-400' : 'text-gray-700 hover:text-amber-600'}`}>Nosotros</a>
-            <a href="#contacto" className={`transition-colors duration-300 font-medium ${darkMode ? 'text-gray-300 hover:text-amber-400' : 'text-gray-700 hover:text-amber-600'}`}>Contacto</a>
+            </Link>
+
+            <Link to="/lux-tech/nosotros" className={`transition-colors duration-300 font-medium ${darkMode ? 'text-gray-300 hover:text-amber-400' : 'text-gray-700 hover:text-amber-600'}`}>
+              Nosotros
+            </Link>
+
+            <Link to="/lux-tech/contacto" className={`transition-colors duration-300 font-medium ${darkMode ? 'text-gray-300 hover:text-amber-400' : 'text-gray-700 hover:text-amber-600'}`}>
+              Contacto
+            </Link>
           </div>
 
           {/* Botón CTA Desktop */}
           <div className="hidden md:block">
-            <button className="bg-gradient-to-r from-amber-500 to-orange-500 text-slate-900 px-6 py-2.5 rounded-lg hover:from-amber-400 hover:to-orange-400 transition-all duration-300 font-semibold shadow-lg shadow-amber-500/30">
-              Cotizar Ahora
-            </button>
+            <Link to="/lux-tech/cotizar">
+              <button className="bg-gradient-to-r from-amber-500 to-orange-500 text-slate-900 px-6 py-2.5 rounded-lg hover:from-amber-400 hover:to-orange-400 transition-all duration-300 font-semibold shadow-lg shadow-amber-500/30">
+                Cotizar Ahora
+              </button>
+            </Link>
           </div>
 
           {/* Hamburger Menu Mobile */}
@@ -60,17 +82,20 @@ export default function LuminaTechHome({ darkMode, setDarkMode }: HeaderProps) {
         {menuOpen && (
           <div className="md:hidden pb-4 border-t border-amber-500/20 mt-2 pt-4">
             <div className="flex flex-col space-y-3">
-              <a href="#home" className="text-gray-300 hover:text-amber-400 py-2 transition-colors">Inicio</a>
-              <a href="#productos" className="text-gray-300 hover:text-amber-400 py-2 transition-colors">Productos</a>
-              <a href="#simulador" className="text-gray-300 hover:text-amber-400 py-2 transition-colors flex items-center">
+              <Link to="/lux-tech/" className="text-gray-300 hover:text-amber-400 py-2 transition-colors">Inicio</Link>
+              <Link to="/lux-tech/productos" className="text-gray-300 hover:text-amber-400 py-2 transition-colors">Productos</Link>
+              <Link to="/lux-tech/simulador" className="text-gray-300 hover:text-amber-400 py-2 transition-colors flex items-center">
                 Simulador
                 <span className="ml-2 text-xs bg-amber-500/20 text-amber-400 px-2 py-0.5 rounded-full">Próximamente</span>
-              </a>
-              <a href="#nosotros" className="text-gray-300 hover:text-amber-400 py-2 transition-colors">Nosotros</a>
-              <a href="#contacto" className="text-gray-300 hover:text-amber-400 py-2 transition-colors">Contacto</a>
-              <button className="bg-gradient-to-r from-amber-500 to-orange-500 text-slate-900 px-6 py-2.5 rounded-lg hover:from-amber-400 hover:to-orange-400 transition-all duration-300 font-semibold w-full mt-2">
-                Cotizar Ahora
-              </button>
+              </Link>
+              <Link to="/lux-tech/nosotros" className="text-gray-300 hover:text-amber-400 py-2 transition-colors">Nosotros</Link>
+              <Link to="/lux-tech/contacto" className="text-gray-300 hover:text-amber-400 py-2 transition-colors">Contacto</Link>
+
+              <Link to="/lux-tech/cotizar">
+                <button className="bg-gradient-to-r from-amber-500 to-orange-500 text-slate-900 px-6 py-2.5 rounded-lg hover:from-amber-400 hover:to-orange-400 transition-all duration-300 font-semibold w-full mt-2">
+                  Cotizar Ahora
+                </button>
+              </Link>
             </div>
           </div>
         )}
