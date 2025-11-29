@@ -12,14 +12,14 @@ import { useDarkMode } from '@/contexts/DarkModeContext';
 // Configuración de funciones lineales y errores
 const LIGHTING_CONFIG = {
     led: {
-        aula: { slope: 985.2, intercept: 1200.4, error: 0.08 },
-        oficina: { slope: 890.6, intercept: 540.1, error: 0.08 },
-        'sala-reuniones': { slope: 750.4, intercept: 300.2, error: 0.08 }
+        aula: { slope: 622.141, intercept: 969.64, error: 0.14665 },
+        oficina: { slope: 913.6718, intercept: 431.8729, error: 0.1689 },
+        'sala-reuniones': { slope: 476.6252, intercept: 41.4743, error: 0.1836 }
     },
     fluorescente: {
-        aula: { slope: 985.2, intercept: 1200.4, error: 0.12 },
-        oficina: { slope: 890.6, intercept: 540.1, error: 0.12 },
-        'sala-reuniones': { slope: 750.4, intercept: 300.2, error: 0.12 }
+        aula: { slope: 756.82362, intercept: 1820.8368, error: 0.15529 },
+        oficina: { slope: 1113.8895, intercept: 942.1487, error: 0.1689 },
+        'sala-reuniones': { slope: 592.7807, intercept: -64.02781, error: 0.18625 }
     }
 };
 
