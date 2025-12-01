@@ -10,6 +10,7 @@ import {
   TreePine,
   Sparkles
 } from 'lucide-react';
+import { useLocation } from 'wouter';
 import BeforeAfterSlider from './BeforeAfterSlider';
 import exterior1 from '../media/exterior1.png';
 import exterior2 from '../media/exterior2.png';
@@ -19,6 +20,7 @@ interface IluminacionExteriorProps {
 }
 
 export default function IluminacionExterior({ darkMode }: IluminacionExteriorProps) {
+  const [, navigate] = useLocation();
   const beneficios = [
     {
       icon: Zap,
@@ -80,7 +82,7 @@ export default function IluminacionExterior({ darkMode }: IluminacionExteriorPro
   return (
     <section 
       className={`min-h-screen py-20 transition-colors duration-500 ${
-        darkMode ? 'bg-gradient-to-br from-slate-950 via-purple-950/20 to-slate-950' : 'bg-gradient-to-br from-gray-50 via-purple-50/30 to-gray-50'
+        darkMode ? 'bg-slate-950' : 'bg-gray-50'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -361,7 +363,10 @@ export default function IluminacionExterior({ darkMode }: IluminacionExteriorPro
 
         {/* CTA */}
         <div className="text-center">
-          <button className="group px-10 py-5 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-lg font-bold rounded-xl hover:from-purple-600 hover:to-pink-600 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-purple-500/50 inline-flex items-center gap-3">
+          <button 
+            onClick={() => navigate('/lux-tech/simulador')}
+            className="group px-10 py-5 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-lg font-bold rounded-xl hover:from-purple-600 hover:to-pink-600 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-purple-500/50 inline-flex items-center gap-3 cursor-pointer"
+          >
             Diseña tu proyecto urbano
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </button>

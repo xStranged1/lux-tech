@@ -8,6 +8,7 @@ import {
   ArrowRight,
   Sparkles
 } from 'lucide-react';
+import { useLocation } from 'wouter';
 import BeforeAfterSlider from './BeforeAfterSlider';
 import comercial1 from '../media/comercial1.png';
 import comercial2 from '../media/comercial2.png';
@@ -17,6 +18,7 @@ interface IluminacionComercialProps {
 }
 
 export default function IluminacionComercial({ darkMode }: IluminacionComercialProps) {
+  const [, navigate] = useLocation();
   const beneficios = [
     {
       icon: TrendingUp,
@@ -55,8 +57,7 @@ export default function IluminacionComercial({ darkMode }: IluminacionComercialP
 
   return (
     <section
-      className={`min-h-screen py-20 transition-colors duration-500 ${darkMode ? 'bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950' : 'bg-gradient-to-br from-gray-50 via-white to-gray-50'
-        }`}
+      className={`min-h-screen py-20 transition-colors duration-500 ${darkMode ? 'bg-slate-950' : 'bg-gray-50'}`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -275,12 +276,14 @@ export default function IluminacionComercial({ darkMode }: IluminacionComercialP
 
         {/* CTA */}
         <div className="text-center">
-          <button className="group px-10 py-5 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-lg font-bold rounded-xl hover:from-amber-600 hover:to-orange-600 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-amber-500/50 inline-flex items-center gap-3">
+          <button 
+            onClick={() => navigate('/lux-tech/simulador')}
+            className="group px-10 py-5 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-lg font-bold rounded-xl hover:from-amber-600 hover:to-orange-600 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-amber-500/50 inline-flex items-center gap-3 cursor-pointer"
+          >
             Dimensiona tu oficina ahora
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </button>
-          <p className={`mt-4 text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'
-            }`}>
+          <p className={`mt-4 text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
             Simulador basado en Algoritmo de Mínimos Cuadrados (LS)
           </p>
         </div>

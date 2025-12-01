@@ -9,6 +9,7 @@ import {
   AlertTriangle,
   Package
 } from 'lucide-react';
+import { useLocation } from 'wouter';
 import BeforeAfterSlider from './BeforeAfterSlider';
 import industrial1 from '../media/Industrial1.png';
 import industrial2 from '../media/industrial2.png';
@@ -18,6 +19,7 @@ interface IluminacionIndustrialProps {
 }
 
 export default function IluminacionIndustrial({ darkMode }: IluminacionIndustrialProps) {
+  const [, navigate] = useLocation();
   const beneficios = [
     {
       icon: Shield,
@@ -64,7 +66,7 @@ export default function IluminacionIndustrial({ darkMode }: IluminacionIndustria
   return (
     <section 
       className={`min-h-screen py-20 transition-colors duration-500 ${
-        darkMode ? 'bg-gradient-to-br from-slate-950 via-blue-950/20 to-slate-950' : 'bg-gradient-to-br from-gray-50 via-blue-50/30 to-gray-50'
+        darkMode ? 'bg-slate-950' : 'bg-gray-50'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -310,7 +312,10 @@ export default function IluminacionIndustrial({ darkMode }: IluminacionIndustria
 
         {/* CTA */}
         <div className="text-center">
-          <button className="group px-10 py-5 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-lg font-bold rounded-xl hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-blue-500/50 inline-flex items-center gap-3">
+          <button 
+            onClick={() => navigate('/lux-tech/simulador')}
+            className="group px-10 py-5 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-lg font-bold rounded-xl hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-blue-500/50 inline-flex items-center gap-3 cursor-pointer"
+          >
             Calcula la potencia de tu nave
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </button>
