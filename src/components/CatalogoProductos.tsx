@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
 import { ExternalLink, Zap, TrendingUp, Package, Search } from 'lucide-react';
+import panelLedTecho from '../media/PanelLedTecho.jpg';
+import panelLedBellalux from '../media/PanelLedBellalux.jpg';
+import panelLedPhillips from '../media/PanelLedPhillips.jpg';
+import tubosLed18w from '../media/TubosLed18w.jpg';
+import tuboFluorescenteT8 from '../media/TuboFluorescenteT8.jpg';
 
 interface Producto {
   id: number;
@@ -37,7 +42,7 @@ export default function CatalogoProductos({ darkMode = false, filtro = 'todos' }
       flujoLuminoso: 4320,
       precio: 53990,
       link: 'https://www.mercadolibre.com.ar/panel-led-techo-60x60-36w-luz-neutra-4000k-osram-ledvance-color-blanco/p/MLA19914635',
-      imagen: '/api/placeholder/300/300',
+      imagen: panelLedTecho,
       categoria: 'panel',
       tipo: 'LED',
       marca: 'Ledvance/Osram'
@@ -49,7 +54,7 @@ export default function CatalogoProductos({ darkMode = false, filtro = 'todos' }
       flujoLuminoso: 2880,
       precio: 28601,
       link: 'https://www.mercadolibre.com.ar/bellalux-panel-1-220v-blanco-luz-neutra-4000k-4000-k/p/MLA19834837',
-      imagen: '/api/placeholder/300/300',
+      imagen: panelLedBellalux,
       categoria: 'panel',
       tipo: 'LED',
       marca: 'Bellalux'
@@ -61,7 +66,7 @@ export default function CatalogoProductos({ darkMode = false, filtro = 'todos' }
       flujoLuminoso: 3200,
       precio: 30728.75,
       link: 'https://tiendaobjetos.com.ar/productos/pack-x4-panel-de-embutir-led-36w-60x60-signify-philips/',
-      imagen: '/api/placeholder/300/300',
+      imagen: panelLedPhillips,
       categoria: 'panel',
       tipo: 'LED',
       marca: 'Philips'
@@ -73,7 +78,7 @@ export default function CatalogoProductos({ darkMode = false, filtro = 'todos' }
       flujoLuminoso: 1600,
       precio: 3906.07,
       link: 'https://www.mercadolibre.com.ar/tubos-led-18w-120-cm-etheos-directo-a-220w-1600-lm/p/MLA23553117',
-      imagen: '/api/placeholder/300/300',
+      imagen: tubosLed18w,
       categoria: 'tubo',
       tipo: 'LED',
       marca: 'Etheos'
@@ -85,7 +90,7 @@ export default function CatalogoProductos({ darkMode = false, filtro = 'todos' }
       flujoLuminoso: 1350,
       precio: 5803.31,
       link: 'https://www.mercadolibre.com.ar/tubo-fluorescente-t8-18w-luz-dia/p/MLA23799126',
-      imagen: '/api/placeholder/300/300',
+      imagen: tuboFluorescenteT8,
       categoria: 'tubo',
       tipo: 'Fluorescente',
       marca: 'Genérico'
@@ -143,7 +148,22 @@ export default function CatalogoProductos({ darkMode = false, filtro = 'todos' }
             >
               {/* Imagen del producto */}
               <div className={`relative h-48 overflow-hidden ${darkMode ? 'bg-slate-800' : 'bg-gray-100'}`}>
-                <div className="absolute inset-0 flex items-center justify-center">
+                <img 
+                  src={producto.imagen} 
+                  alt={producto.nombre}
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    // Fallback si la imagen no carga
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                    const fallback = target.parentElement?.querySelector('.fallback-icon');
+                    if (fallback) {
+                      (fallback as HTMLElement).style.display = 'flex';
+                    }
+                  }}
+                />
+                {/* Fallback icon (oculto por defecto) */}
+                <div className="fallback-icon absolute inset-0 flex items-center justify-center" style={{ display: 'none' }}>
                   <Package className={`w-20 h-20 ${darkMode ? 'text-slate-700' : 'text-gray-300'}`} />
                 </div>
                 {/* Badge de tipo */}
