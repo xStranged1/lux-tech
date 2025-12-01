@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Lightbulb, Calculator, TrendingUp, AlertCircle } from 'lucide-react';
+import { Lightbulb, Calculator, TrendingUp, AlertCircle, ShoppingCart, ExternalLink } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Area, ComposedChart } from 'recharts';
 import { useDarkMode } from '@/contexts/DarkModeContext';
 
@@ -23,17 +23,52 @@ const LIGHTING_CONFIG = {
     }
 };
 
-// Productos de ejemplo (para cálculos)
+// Productos actualizados
 const SAMPLE_PRODUCTS = {
     led: [
-        { name: 'Panel LED 40W', lumens: 4000, watts: 40 },
-        { name: 'Panel LED 60W', lumens: 6000, watts: 60 },
-        { name: 'Tubo LED 18W', lumens: 1800, watts: 18 }
+        {
+            name: 'Panel Led Bellalux 60x60 Cuadrado',
+            lumens: 3600,
+            watts: 36,
+            price: 26691,
+            url: 'https://www.mercadolibre.com.ar/panel-led-bellalux-60x60-cuadrado-36w-neutro-embutir-e-a-color-blanco/p/MLA19834837'
+        },
+        {
+            name: 'Tubo LED 18W T8 120cm',
+            lumens: 1800,
+            watts: 12,
+            price: 3906.07,
+            url: 'https://www.mercadolibre.com.ar/tubo-led-18w-t8-120cm-luz-fria-x-10-unidades-color-de-la-luz-blanco-frio/p/MLA28277212'
+        }
     ],
     fluorescente: [
-        { name: 'Tubo T8 36W', lumens: 3000, watts: 36 },
-        { name: 'Tubo T8 58W', lumens: 5000, watts: 58 }
+        {
+            name: 'Tubo Fluorescente T8 18W',
+            lumens: 1350,
+            watts: 18,
+            price: 5803,
+            url: 'https://www.mercadolibre.com.ar/tubo-fluorescente-t8-18w-luz-dia/p/MLA23799126'
+        }
     ]
+};
+
+// Recomendaciones de temperatura de color
+const COLOR_TEMP_RECOMMENDATIONS = {
+    aula: {
+        temp: '4000 K',
+        name: 'Luz Neutra',
+        description: 'Ideal para concentración y lectura'
+    },
+    oficina: {
+        temp: '4000-6500 K',
+        name: 'Luz Neutra a Fría',
+        description: 'Estimula la productividad y mantiene alerta'
+    },
+    'sala-reuniones': {
+        temp: '3000-6500 K',
+        name: 'Luz Cálida o Fría',
+        description: 'Luz cálida (3000K) para comodidad, luz fría (6500K) para estímulo'
+    }
 };
 
 const calculateLumens = (surface, roomType, lightType) => {
@@ -68,7 +103,7 @@ const recommendLuminaires = (requiredLumens, lightType) => {
     let minDifference = Infinity;
 
     for (const product of products) {
-        for (let qty = 1; qty <= 50; qty++) {
+        for (let qty = 1; qty <= 100; qty++) {
             const totalLumens = product.lumens * qty;
             const difference = Math.abs(totalLumens - requiredLumens);
 
@@ -79,6 +114,7 @@ const recommendLuminaires = (requiredLumens, lightType) => {
                     quantity: qty,
                     totalLumens,
                     totalWatts: product.watts * qty,
+                    totalPrice: product.price * qty,
                     compliance: ((totalLumens / requiredLumens) * 100).toFixed(1)
                 };
             }
@@ -263,6 +299,32 @@ export default function LightingSimulator() {
                                 con una incertidumbre de ±{(results.error * 100).toFixed(0)}%
                             </AlertDescription>
                         </Alert>
+
+                        {/* Color Temperature Recommendation */}
+                        {roomType && COLOR_TEMP_RECOMMENDATIONS[roomType] && (
+                            <Card className={`mb-8 shadow-lg ${darkMode
+                                ? 'bg-gradient-to-br from-blue-900/30 to-purple-900/30 border-blue-700'
+                                : 'bg-gradient-to-br from-blue-50 to-purple-50 border-blue-200'
+                                }`}>
+                                <CardHeader>
+                                    <CardTitle className={`flex items-center gap-2 ${darkMode ? 'text-blue-300' : 'text-blue-900'
+                                        }`}>
+                                        <Lightbulb className="w-5 h-5" />
+                                        Temperatura de Color Recomendada
+                                    </CardTitle>
+                                </CardHeader>
+                                <CardContent>
+                                    <div className={`p-4 rounded-lg ${darkMode ? 'bg-blue-900/40' : 'bg-white'}`}>
+                                        <p className={`text-2xl font-bold mb-2 ${darkMode ? 'text-blue-300' : 'text-blue-700'}`}>
+                                            {COLOR_TEMP_RECOMMENDATIONS[roomType].temp} - {COLOR_TEMP_RECOMMENDATIONS[roomType].name}
+                                        </p>
+                                        <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                                            {COLOR_TEMP_RECOMMENDATIONS[roomType].description}
+                                        </p>
+                                    </div>
+                                </CardContent>
+                            </Card>
+                        )}
 
                         {/* Chart */}
                         <Card className={`mb-8 shadow-lg ${darkMode
@@ -451,6 +513,32 @@ export default function LightingSimulator() {
                                             <li>• Incertidumbre del cálculo: ±{(results.error * 100).toFixed(0)}%</li>
                                             <li>• Rango de lúmenes: {Math.round(results.lowerBound).toLocaleString()} - {Math.round(results.upperBound).toLocaleString()} lm</li>
                                         </ul>
+                                    </div>
+
+                                    {/* Total Cost and Buy Button */}
+                                    <div className={`mt-6 p-4 rounded-lg ${darkMode
+                                        ? 'bg-gray-700/50 border border-gray-600'
+                                        : 'bg-gray-50 border border-gray-200'
+                                        }`}>
+                                        <div className="flex items-center justify-between mb-3">
+                                            <div>
+                                                <p className={`text-sm mb-1 ${darkMode ? 'text-gray-400' : 'text-gray-600'
+                                                    }`}>Inversión Total</p>
+                                                <p className={`text-2xl font-bold ${darkMode ? 'text-amber-400' : 'text-amber-700'
+                                                    }`}>
+                                                    ${results.recommendation.totalPrice.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ARS
+                                                </p>
+                                            </div>
+                                            <ShoppingCart className={`w-8 h-8 ${darkMode ? 'text-amber-400' : 'text-amber-600'}`} />
+                                        </div>
+
+                                        <button
+                                            onClick={() => window.open(results.recommendation.product.url, '_blank')}
+                                            className="w-full bg-gradient-to-r from-amber-500 to-orange-500 text-slate-900 px-6 py-2.5 rounded-lg hover:from-amber-400 hover:to-orange-400 transition-all duration-300 font-semibold shadow-lg shadow-amber-500/30 flex items-center justify-center gap-2"
+                                        >
+                                            Comprar en Mercado Libre
+                                            <ExternalLink className="w-4 h-4" />
+                                        </button>
                                     </div>
                                 </CardContent>
                             </Card>

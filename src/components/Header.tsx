@@ -32,7 +32,7 @@ export default function LuminaTechHome({ darkMode, setDarkMode }: HeaderProps) {
               <div className={`absolute inset-0 blur-md transition-colors duration-500 ${darkMode ? 'bg-amber-400/50' : 'bg-amber-600/30'}`}></div>
             </div>
             <div>
-              <h1 className={`text-2xl font-bold tracking-tight transition-colors duration-500 ${darkMode ? 'text-white' : 'text-slate-900'}`}>LuminaTech</h1>
+              <h1 className={`text-2xl font-bold tracking-tight transition-colors duration-500 ${darkMode ? 'text-white' : 'text-slate-900'}`}>LuxTech</h1>
               <p className={`text-xs transition-colors duration-500 ${darkMode ? 'text-amber-400/80' : 'text-amber-600/80'}`}>Iluminación Inteligente</p>
             </div>
           </button>
@@ -49,15 +49,14 @@ export default function LuminaTechHome({ darkMode, setDarkMode }: HeaderProps) {
 
             <Link to="/lux-tech/simulador" className={`transition-colors duration-300 font-medium flex items-center ${darkMode ? 'text-gray-300 hover:text-amber-400' : 'text-gray-700 hover:text-amber-600'}`}>
               Simulador
-              <span className={`ml-1 text-xs px-2 py-0.5 rounded-full ${darkMode ? 'bg-amber-500/20 text-amber-400' : 'bg-amber-200 text-amber-700'}`}>Próximamente</span>
             </Link>
 
             <Link to="/lux-tech/nosotros" className={`transition-colors duration-300 font-medium ${darkMode ? 'text-gray-300 hover:text-amber-400' : 'text-gray-700 hover:text-amber-600'}`}>
               Nosotros
             </Link>
 
-            <Link to="/lux-tech/contacto" className={`transition-colors duration-300 font-medium ${darkMode ? 'text-gray-300 hover:text-amber-400' : 'text-gray-700 hover:text-amber-600'}`}>
-              Contacto
+            <Link to="/lux-tech/casos-exito" className={`transition-colors duration-300 font-medium ${darkMode ? 'text-gray-300 hover:text-amber-400' : 'text-gray-700 hover:text-amber-600'}`}>
+              Casos de éxito
             </Link>
           </div>
 
@@ -86,7 +85,6 @@ export default function LuminaTechHome({ darkMode, setDarkMode }: HeaderProps) {
               <Link to="/lux-tech/productos" className="text-gray-300 hover:text-amber-400 py-2 transition-colors">Productos</Link>
               <Link to="/lux-tech/simulador" className="text-gray-300 hover:text-amber-400 py-2 transition-colors flex items-center">
                 Simulador
-                <span className="ml-2 text-xs bg-amber-500/20 text-amber-400 px-2 py-0.5 rounded-full">Próximamente</span>
               </Link>
               <Link to="/lux-tech/nosotros" className="text-gray-300 hover:text-amber-400 py-2 transition-colors">Nosotros</Link>
               <Link to="/lux-tech/contacto" className="text-gray-300 hover:text-amber-400 py-2 transition-colors">Contacto</Link>
