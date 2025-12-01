@@ -20,6 +20,7 @@ export default function App() {
           <Route path="/lux-tech/simulador" component={LightingSimulator} />
           <Route path="/lux-tech/nosotros" component={NosotrosScreen} />
           <Route path="/lux-tech/contacto" component={ContactoScreen} />
+          <Route path="/lux-tech/cotizar" component={ContactoScreen} />
           <Route>404: No such page!</Route>
         </Switch>
       </div>
