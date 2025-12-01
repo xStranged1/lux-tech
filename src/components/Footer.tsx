@@ -8,11 +8,10 @@ interface FooterProps {
 export default function Footer({ darkMode }: FooterProps) {
   return (
     <footer
-      className={`border-t py-16 transition-colors duration-500 ${
-        darkMode
-          ? 'bg-slate-950 border-amber-500/20 text-white'
-          : 'bg-white border-amber-500/30 text-slate-900'
-      }`}
+      className={`border-t py-16 transition-colors duration-500 ${darkMode
+        ? 'bg-slate-950 border-amber-500/20 text-white'
+        : 'bg-white border-amber-500/30 text-slate-900'
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-4 gap-12">
@@ -21,14 +20,13 @@ export default function Footer({ darkMode }: FooterProps) {
             <div className="flex items-center space-x-3 mb-4">
               <Lightbulb className="w-8 h-8 text-amber-400" />
               <div>
-                <h4 className="text-xl font-bold">LuminaTech</h4>
+                <h4 className="text-xl font-bold">LuxTech</h4>
                 <p className="text-xs text-amber-400/80">Iluminación Inteligente</p>
               </div>
             </div>
             <p
-              className={`text-sm leading-relaxed transition-colors duration-500 ${
-                darkMode ? 'text-gray-400' : 'text-gray-600'
-              }`}
+              className={`text-sm leading-relaxed transition-colors duration-500 ${darkMode ? 'text-gray-400' : 'text-gray-600'
+                }`}
             >
               Transformando espacios con tecnología LED de última generación.
             </p>
@@ -40,7 +38,7 @@ export default function Footer({ darkMode }: FooterProps) {
             <ul className="space-y-2 text-sm">
               <li>
                 <a
-                  href="#"
+                  href="/lux-tech/productos"
                   className="text-gray-400 hover:text-amber-400 transition-colors"
                 >
                   Iluminación Comercial
@@ -79,7 +77,7 @@ export default function Footer({ darkMode }: FooterProps) {
             <ul className="space-y-2 text-sm">
               <li>
                 <a
-                  href="#nosotros"
+                  href="/lux-tech/nosotros"
                   className="text-gray-400 hover:text-amber-400 transition-colors"
                 >
                   Sobre Nosotros
@@ -87,7 +85,7 @@ export default function Footer({ darkMode }: FooterProps) {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="/lux-tech/casos-exito"
                   className="text-gray-400 hover:text-amber-400 transition-colors"
                 >
                   Casos de Éxito
@@ -146,16 +144,14 @@ export default function Footer({ darkMode }: FooterProps) {
 
         {/* Copyright */}
         <div
-          className={`border-t mt-12 pt-8 text-center transition-colors duration-500 ${
-            darkMode ? 'border-amber-500/20' : 'border-amber-500/30'
-          }`}
+          className={`border-t mt-12 pt-8 text-center transition-colors duration-500 ${darkMode ? 'border-amber-500/20' : 'border-amber-500/30'
+            }`}
         >
           <p
-            className={`text-sm transition-colors duration-500 ${
-              darkMode ? 'text-gray-400' : 'text-gray-600'
-            }`}
+            className={`text-sm transition-colors duration-500 ${darkMode ? 'text-gray-400' : 'text-gray-600'
+              }`}
           >
-            &copy; 2024 LuminaTech. Todos los derechos reservados. | Iluminando el futuro
+            &copy; 2025 LuxTech. Todos los derechos reservados. | Iluminando el futuro
             con tecnología
           </p>
         </div>

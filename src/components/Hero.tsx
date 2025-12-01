@@ -1,4 +1,4 @@
-import React from 'react';
+import { Link } from 'wouter';
 import { ChevronRight, Sparkles, Lightbulb } from 'lucide-react';
 
 interface HeroProps {
@@ -10,8 +10,8 @@ export default function Hero({ darkMode }: HeroProps) {
     <section
       id="home"
       className={`relative text-white py-24 md:py-32 overflow-hidden transition-colors duration-500 ${darkMode
-          ? 'bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900'
-          : 'bg-gradient-to-br from-gray-100 via-amber-50 to-gray-100'
+        ? 'bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900'
+        : 'bg-gradient-to-br from-gray-100 via-amber-50 to-gray-100'
         }`}
     >
       {/* Efectos de fondo */}
@@ -43,14 +43,18 @@ export default function Hero({ darkMode }: HeroProps) {
               Soluciones de iluminación inteligente que transforman espacios y reducen costos hasta un 70%
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="bg-gradient-to-r from-amber-500 to-orange-500 text-slate-900 px-8 py-4 rounded-lg text-lg font-semibold hover:from-amber-400 hover:to-orange-400 transition-all duration-300 shadow-xl shadow-amber-500/30 flex items-center justify-center">
-                Ver Productos
-                <ChevronRight className="ml-2 w-5 h-5" />
-              </button>
-              <button className="border-2 border-amber-500/50 text-amber-400 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-amber-500/10 transition-all duration-300 flex items-center justify-center">
-                <Sparkles className="mr-2 w-5 h-5" />
-                Simulador
-              </button>
+              <Link href="/lux-tech/productos">
+                <button className="bg-gradient-to-r from-amber-500 to-orange-500 text-slate-900 px-8 py-4 rounded-lg text-lg font-semibold hover:from-amber-400 hover:to-orange-400 transition-all duration-300 shadow-xl shadow-amber-500/30 flex items-center justify-center">
+                  Ver Productos
+                  <ChevronRight className="ml-2 w-5 h-5" />
+                </button>
+              </Link>
+              <Link href="/lux-tech/simulador">
+                <button className="border-2 border-amber-500/50 text-amber-400 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-amber-500/10 transition-all duration-300 flex items-center justify-center">
+                  <Sparkles className="mr-2 w-5 h-5" />
+                  Simulador
+                </button>
+              </Link>
             </div>
           </div>
 

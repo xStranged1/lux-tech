@@ -47,7 +47,7 @@ export default function Nosotros({ darkMode }: NosotrosProps) {
               className={`text-lg mb-6 leading-relaxed transition-colors duration-500 ${darkMode ? 'text-gray-400' : 'text-gray-600'
                 }`}
             >
-              En LuminaTech, combinamos tecnología LED de vanguardia con diseño
+              En LuxTech, combinamos tecnología LED de vanguardia con diseño
               inteligente para crear soluciones de iluminación que no solo iluminan,
               sino que transforman espacios.
             </p>

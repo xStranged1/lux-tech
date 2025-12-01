@@ -32,7 +32,7 @@ export default function LuminaTechHome({ darkMode, setDarkMode }: HeaderProps) {
               <div className={`absolute inset-0 blur-md transition-colors duration-500 ${darkMode ? 'bg-amber-400/50' : 'bg-amber-600/30'}`}></div>
             </div>
             <div>
-              <h1 className={`text-2xl font-bold tracking-tight transition-colors duration-500 ${darkMode ? 'text-white' : 'text-slate-900'}`}>LuminaTech</h1>
+              <h1 className={`text-2xl font-bold tracking-tight transition-colors duration-500 ${darkMode ? 'text-white' : 'text-slate-900'}`}>LuxTech</h1>
               <p className={`text-xs transition-colors duration-500 ${darkMode ? 'text-amber-400/80' : 'text-amber-600/80'}`}>Iluminación Inteligente</p>
             </div>
           </button>
@@ -55,8 +55,8 @@ export default function LuminaTechHome({ darkMode, setDarkMode }: HeaderProps) {
               Nosotros
             </Link>
 
-            <Link to="/lux-tech/contacto" className={`transition-colors duration-300 font-medium ${darkMode ? 'text-gray-300 hover:text-amber-400' : 'text-gray-700 hover:text-amber-600'}`}>
-              Contacto
+            <Link to="/lux-tech/casos-exito" className={`transition-colors duration-300 font-medium ${darkMode ? 'text-gray-300 hover:text-amber-400' : 'text-gray-700 hover:text-amber-600'}`}>
+              Casos de éxito
             </Link>
           </div>
 

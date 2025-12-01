@@ -5,6 +5,7 @@ import ProductosScreen from "./screens/Productos";
 import NosotrosScreen from "./screens/Nosotros";
 import ContactoScreen from "./screens/Contacto";
 import LightingSimulator from "./screens/Simulador";
+import RecomendacionesScreen from "./screens/Recomendaciones";
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
           <Route path="/" component={Home} />
           <Route path="/lux-tech" component={Home} />
           <Route path="/lux-tech/productos" component={ProductosScreen} />
+          <Route path="/lux-tech/casos-exito" component={RecomendacionesScreen} />
           <Route path="/lux-tech/simulador" component={LightingSimulator} />
           <Route path="/lux-tech/nosotros" component={NosotrosScreen} />
           <Route path="/lux-tech/contacto" component={ContactoScreen} />
