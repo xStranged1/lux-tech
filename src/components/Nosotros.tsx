@@ -3,6 +3,7 @@ import { Lightbulb } from 'lucide-react';
 import fedeImg from '../media/fede.png';
 import gonzaImg from '../media/gonza.png';
 import salaImg from '../media/sala.png';
+import lucioImg from '../media/lucio.png';
 
 interface NosotrosProps {
   darkMode: boolean;
@@ -23,7 +24,7 @@ export default function Nosotros({ darkMode }: NosotrosProps) {
     {
       name: 'Lucio Borda',
       role: 'Jefe del Departamento de Ventas',
-      image: '/api/placeholder/300/300'
+      image: lucioImg
     }
   ];
 
