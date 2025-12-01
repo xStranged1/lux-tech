@@ -67,7 +67,7 @@ export default function BeforeAfterSlider({
     <div className="w-full">
       <div
         ref={containerRef}
-        className={`relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl cursor-ew-resize select-none ${
+        className={`relative w-full h-150 rounded-2xl overflow-hidden shadow-2xl cursor-ew-resize select-none ${
           darkMode ? 'border-2 border-slate-700' : 'border-2 border-gray-200'
         }`}
         onMouseDown={handleMouseDown}
@@ -78,7 +78,7 @@ export default function BeforeAfterSlider({
           <img
             src={afterImage}
             alt={afterLabel}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-contain"
             draggable={false}
           />
           {/* Label "Después" */}
@@ -99,7 +99,7 @@ export default function BeforeAfterSlider({
           <img
             src={beforeImage}
             alt={beforeLabel}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-contain"
             draggable={false}
           />
           {/* Label "Antes" */}

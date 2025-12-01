@@ -97,8 +97,8 @@ export default function IluminacionComercial({ darkMode }: IluminacionComercialP
             Transformación Visual
           </h2>
           <BeforeAfterSlider
-            beforeImage="./media/comercial1.png"
-            afterImage="./media/comercial2.png"
+            beforeImage={comercial1}
+            afterImage={comercial2}
             beforeLabel="Iluminación Tradicional"
             afterLabel="Sistema LED LuminaTech"
             darkMode={darkMode}

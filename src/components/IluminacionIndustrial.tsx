@@ -10,6 +10,8 @@ import {
   Package
 } from 'lucide-react';
 import BeforeAfterSlider from './BeforeAfterSlider';
+import industrial1 from '../media/Industrial1.png';
+import industrial2 from '../media/industrial2.png';
 
 interface IluminacionIndustrialProps {
   darkMode: boolean;
@@ -102,8 +104,8 @@ export default function IluminacionIndustrial({ darkMode }: IluminacionIndustria
             Transformación Industrial
           </h2>
           <BeforeAfterSlider
-            beforeImage="./media/industrial1.png"
-            afterImage="./media/industrial2.png"
+            beforeImage={industrial1}
+            afterImage={industrial2}
             beforeLabel="Iluminación Convencional"
             afterLabel="Sistema Pro-Efficiency"
             darkMode={darkMode}
