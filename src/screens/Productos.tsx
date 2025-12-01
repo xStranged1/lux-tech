@@ -3,35 +3,19 @@ import { Lightbulb, ChevronRight, X } from 'lucide-react';
 import IluminacionComercial from '../components/IluminacionComercial';
 import IluminacionIndustrial from '../components/IluminacionIndustrial';
 import IluminacionExterior from '../components/IluminacionExterior';
+import { useDarkMode } from '../contexts/DarkModeContext';
 
-interface ProductosProps {
-  darkMode: boolean;
-}
-
+// Elimina la necesidad de prop darkMode, usa el contexto global
 type SeccionActiva = 'comercial' | 'industrial' | 'exterior' | null;
 
-export default function Productos({ darkMode }: ProductosProps) {
+export default function Productos() {
+  const { darkMode } = useDarkMode();
   const [seccionActiva, setSeccionActiva] = useState<SeccionActiva>(null);
 
   const productos = [
-    { 
-      id: 'comercial' as const,
-      name: 'Iluminación Comercial', 
-      desc: 'Sistemas LED para oficinas, comercios y espacios corporativos',
-      color: 'amber'
-    },
-    { 
-      id: 'industrial' as const,
-      name: 'Iluminación Industrial', 
-      desc: 'Soluciones robustas para fábricas, almacenes y naves',
-      color: 'blue'
-    },
-    { 
-      id: 'exterior' as const,
-      name: 'Iluminación Exterior', 
-      desc: 'Luminarias para espacios públicos, calles y fachadas',
-      color: 'purple'
-    },
+    { id: 'comercial' as const, name: 'Iluminación Comercial', desc: 'Sistemas LED para oficinas, comercios y espacios corporativos', color: 'amber' },
+    { id: 'industrial' as const, name: 'Iluminación Industrial', desc: 'Soluciones robustas para fábricas, almacenes y naves', color: 'blue' },
+    { id: 'exterior' as const, name: 'Iluminación Exterior', desc: 'Luminarias para espacios públicos, calles y fachadas', color: 'purple' },
   ];
 
   const getColorClasses = (color: string, darkMode: boolean) => {
