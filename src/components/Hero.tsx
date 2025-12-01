@@ -9,11 +9,10 @@ export default function Hero({ darkMode }: HeroProps) {
   return (
     <section
       id="home"
-      className={`relative text-white py-24 md:py-32 overflow-hidden transition-colors duration-500 ${
-        darkMode
+      className={`relative text-white py-24 md:py-32 overflow-hidden transition-colors duration-500 ${darkMode
           ? 'bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900'
           : 'bg-gradient-to-br from-gray-100 via-amber-50 to-gray-100'
-      }`}
+        }`}
     >
       {/* Efectos de fondo */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-amber-500/10 via-transparent to-transparent"></div>
@@ -29,9 +28,8 @@ export default function Hero({ darkMode }: HeroProps) {
               </span>
             </div>
             <h2
-              className={`text-5xl md:text-7xl font-bold mb-6 leading-tight transition-colors duration-500 ${
-                darkMode ? 'text-white' : 'text-slate-900'
-              }`}
+              className={`text-5xl md:text-7xl font-bold mb-6 leading-tight transition-colors duration-500 ${darkMode ? 'text-white' : 'text-slate-900'
+                }`}
             >
               Ilumina tu{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-400">
@@ -39,9 +37,8 @@ export default function Hero({ darkMode }: HeroProps) {
               </span>
             </h2>
             <p
-              className={`text-xl md:text-2xl mb-8 leading-relaxed transition-colors duration-500 ${
-                darkMode ? 'text-gray-300' : 'text-gray-700'
-              }`}
+              className={`text-xl md:text-2xl mb-8 leading-relaxed transition-colors duration-500 ${darkMode ? 'text-gray-300' : 'text-gray-700'
+                }`}
             >
               Soluciones de iluminación inteligente que transforman espacios y reducen costos hasta un 70%
             </p>
@@ -52,7 +49,7 @@ export default function Hero({ darkMode }: HeroProps) {
               </button>
               <button className="border-2 border-amber-500/50 text-amber-400 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-amber-500/10 transition-all duration-300 flex items-center justify-center">
                 <Sparkles className="mr-2 w-5 h-5" />
-                Simulador (Próximamente)
+                Simulador
               </button>
             </div>
           </div>
